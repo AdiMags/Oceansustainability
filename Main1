@@ -1,0 +1,136 @@
+#All librarys imported here
+import time
+# all defs are written below
+def validate_number_input(prompt):
+
+    while True:
+        try:
+            number_input = int(input(prompt))
+
+            return number_input
+        except ValueError:
+            print("Please enter a number...")
+    return
+
+
+
+def new_game():
+
+    guesses = []
+    correct_guesses = 0
+    question_num = 1
+
+    for key in questions:      #For loop
+        print("------------------------------------------------------")
+        print(key)
+        for i in options[question_num-1]:
+            print(i)
+        guess = input(" Please Enter (A,  B, C, or D): ")
+        guess = guess.upper()
+        guesses.append(guess)
+
+        correct_guesses += check_answer(questions.get(key), guess)
+        question_num += 1
+
+
+score = 0
+
+def check_answer(answer, guess):
+    global score
+
+
+    if answer == guess:
+        print("Thats correct!")
+        score = score+1
+        print ("Your score is:")
+        print (score)
+        return 1
+    else:
+        print("Incorrect! ")
+    print("Your score is:")
+    print (score)
+    return 0
+
+
+def play_again():
+
+    response = input("Do you want to play again? (yes or no): ")
+    response = response.upper()
+
+    if response == "YES":
+        return True
+    else:
+        return False
+
+
+#main program starts here
+# Introduction and greeting to ocean sustainability chatbot
+print("Welcome, ")
+
+name = input("What is your name ? ")
+print("Hi", name)
+prompt = "How old are you? "
+a=validate_number_input(prompt)
+# Answer in numbers
+if a == 16:
+    print("That's cool, your the same age as me")
+else:
+    print("That's cool")
+
+time.sleep(1)
+
+print("This is a Ocean sustaniability quiz where you will be able to answer multiple questions about ocean sustainbility")
+
+time.sleep(3)
+print("Hopefully you can learn abit about the ocean and how you can help sustain the ocean and our beatiful Earth")
+
+time.sleep(3)
+print("Goodluck and lets begin")
+
+time.sleep(2)
+
+
+
+
+questions = {"Q1. What is the main cause of ocean pollution in NZ?": 'B',
+            "Q2. What are possible ways you can help sustain the ocean?": 'D',
+            "Q3. What county contributes the most to marine/ocean pollution?": 'A' ,
+            "Q4. How can you help support sustaining the ocean?": 'C' ,
+            "Q5. Does plastic effect ocean polltion?": 'C' ,
+            "Q6. Is Littering bad for the ocean?": 'A' ,
+            "Q7. Who causes ocean pollution? ": 'D' ,
+            "Q8. What is ocean pollution doing to the Earth? ": 'B' ,
+            }
+options = [["A. Sewage", "B. Oil ", "C. Plastic  ", "D. Cars"],
+          ["A. Recycle", "B. Reuse", "C. Reduce", "D. All the above"],
+          [ "A. China", "B. Brazil", "C. Indonesia", "D. Japan"],
+          ["A. Litter", "B. Kill turtles", "C. Start managing your waste", "D. All the above"],
+           ["A. Sometimes", "B. No", "C. Yes", "D. Earth is flat"],
+           ["A. yes", "B. No", "C. maybe", "D. I like turtle"],
+          ["A. Monkeys", "B. Whales", "C. Turtles", "D. Humans "],
+          ["A. Helping the earth", "B. Killing the earth", "C. I dont know", "D. Nothing"]]
+
+
+
+
+time.sleep(2)
+
+
+new_game()
+
+
+print("------------------------------------------------------")
+print("------------------------------------------------------")
+print("------------------------------------------------------")
+
+
+print( "Hi", name,  "Your final score is: ", score,"Out of 8")
+time.sleep(1)
+print("If you would like to better your score, give the quiz another go.")
+
+while play_again():
+    new_game()
+
+time.sleep(1)
+print("Hope you enjoyed and learnt somthing about ocean sutainability and how to sustain out oceans and our earth")
+print("-----------------------------------------------------------------------------------------------------------")
