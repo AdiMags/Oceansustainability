@@ -1,62 +1,68 @@
-# All librarys imported here
+#All librarys imported here
 import time
-
 # all defs are written below
-def validate_number_input(prompt):  # Function to validate number input
+def validate_number_input(prompt):
 
     while True:
         try:
             number_input = int(input(prompt))
+
             return number_input
         except ValueError:
-            print("Please enter a number...")
+            print("Please enter number...")
     return
 
 
-def new_game():  # Function to start a new game
+
+def new_quiz():
 
     guesses = []
     correct_guesses = 0
     question_num = 1
 
-    for key in questions:  # For loop
-        print("------------------------------------------------------")
+    for key in questions:
+        print("-------------------------")
         print(key)
-        for i in options[question_num - 1]:
+        for i in options[question_num-1]:
             print(i)
-        guess = input("Please Enter (A,  B, C, or D): ")
-        guess = guess.upper()  # Lets the answer be in both upper and lowercase
-        guesses.append(guess)  # Puts the input statment at the bottem of the question
-        # Loops input after each question
-        correct_guesses += check_answer(questions.get(key), guess)  # Add the += to add multiple points at the end
+        guess = input("Enter (A, B, C, or D): ")
+        guess = guess.upper()
+        guesses.append(guess)
+
+        correct_guesses += check_answer(questions.get(key), guess)
         question_num += 1
 
 
-score = 0  # Sets score to 0
+score = 0
 
-
-def check_answer(answer, guess):  # Function to check answer
+def check_answer(answer, guess):
     global score
 
+
     if answer == guess:
-        print("That's correct!")
-        score = score + 1  # Adds a point if correct
-        print("Your score is:")
-        print(score)
+        print("Thats correct!")
+        score = score+1
+        print ("Your score is:")
+        print (score)
         return 1
     else:
         print("Incorrect!")
     print("Your score is:")
-    print(score)
+    print (score)
     return 0
 
 
-def play_again():  # Function asking user to play again
 
-    response = input("Would you like to play again? (yes or no): ")
+
+def play_again():
+
+    response = input("Do you want to play again? (yes or no): ")
     response = response.upper()
 
     if response == "YES":
         return True
     else:
         return False
+
+
+
